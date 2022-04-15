@@ -1,2 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+resources:
+- ../base
+namespace: whereami
+patchesJson6902:
+- target:
+    kind: VirtualService
+    name: whereami
+  patch: |-
+    - op: replace
+      path: /spec/hosts
+      value:
+        - whereami.endpoints.acm-workshop-425-gke.cloud.goog
