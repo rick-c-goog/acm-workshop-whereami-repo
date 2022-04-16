@@ -6,6 +6,7 @@ resources:
 - networkpolicy_denyall.yaml
 - networkpolicy_whereami.yaml
 - sidecar.yaml
+- authorizationpolicy_whereami.yaml
 configMapGenerator:
 - behavior: merge
   literals:

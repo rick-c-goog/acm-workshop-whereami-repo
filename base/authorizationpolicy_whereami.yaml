@@ -1,0 +1,19 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: whereami
+spec:
+  selector:
+    matchLabels:
+      app: whereami
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/asm-ingress/sa/asm-ingressgateway
+    to:
+    - operation:
+        ports:
+        - "8080"
+        methods:
+        - GET
