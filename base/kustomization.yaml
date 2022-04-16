@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - ../upstream
 - virtualservice.yaml
+- networkpolicy_denyall.yaml
+- networkpolicy_whereami.yaml
 configMapGenerator:
 - behavior: merge
   literals:

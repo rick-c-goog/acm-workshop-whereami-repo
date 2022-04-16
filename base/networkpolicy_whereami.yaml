@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: whereami
+spec:
+  podSelector:
+    matchLabels:
+      app: whereami
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: asm-ingress
+      podSelector:
+        matchLabels:
+          app: asm-ingressgateway
+    ports:
+    - port: 8080
+      protocol: TCP
+  egress:
+  - {}
